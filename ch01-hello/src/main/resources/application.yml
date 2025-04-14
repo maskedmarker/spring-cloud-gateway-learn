@@ -1,0 +1,28 @@
+server:
+  port: 9080
+
+#spring:
+#  application:
+#    name: hello-gateway
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: example_route
+          uri: https://httpbin.org/get
+          predicates:
+            - Path=/get
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+# logging
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.example: DEBUG
