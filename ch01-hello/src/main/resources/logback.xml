@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="30 seconds">
 
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %thread %class.%M:%L - %msg%n"/>
     <property name="LOG_DIR" value="logs"/>
+    <property name="LOG_LEVEL_ROOT" value="${logging.level.root:-INFO}" />
 
     <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -37,7 +38,7 @@
     <!--<logger name="org.springframework" level="INFO" />-->
 
     <!-- 定义日志的根级别 -->
-    <root>
+    <root level="${LOG_LEVEL_ROOT}">
         <appender-ref ref="CONSOLE" />
         <!--<appender-ref ref="FILE" />-->
     </root>
