@@ -30,7 +30,7 @@ public class GrayRouteConfig {
                                 .addRequestHeader("X-Route-Version", "gray")
                                 .addResponseHeader("X-Version", "gray-v1.0"))
                         // 灰度服务地址（实际项目中替换为灰度环境地址）
-                        .uri("http://localhost:8081"))
+                        .uri("http://localhost:9081"))
 
                 // 稳定版本路由 - 匹配稳定版本标记的请求
                 .route("service_stable", r -> r
@@ -41,7 +41,7 @@ public class GrayRouteConfig {
                                 .addRequestHeader("X-Route-Version", "stable")
                                 .addResponseHeader("X-Version", "stable-v1.0"))
                         // 稳定服务地址
-                        .uri("http://localhost:8082"))
+                        .uri("http://localhost:9082"))
 
                 // 默认路由 - 兜底路由（当染色标记不匹配时）
                 .route("service_default", r -> r
@@ -50,7 +50,7 @@ public class GrayRouteConfig {
                                 .stripPrefix(1)
                                 .addRequestHeader("X-Route-Version", "default")
                                 .addResponseHeader("X-Version", "default-v1.0"))
-                        .uri("http://localhost:8082"))
+                        .uri("http://localhost:9082"))
                 .build();
     }
 }

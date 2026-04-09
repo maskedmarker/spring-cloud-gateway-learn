@@ -11,6 +11,7 @@
     <modules>
         <module>ch00-commons</module>
         <module>ch01-hello</module>
+        <module>ch00-commons/ch001-infra/ch0011-mock-server</module>
     </modules>
 
     <properties>
