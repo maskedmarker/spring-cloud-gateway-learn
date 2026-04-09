@@ -1,23 +1,28 @@
 server:
   port: 9080
 
-#spring:
-#  application:
-#    name: hello-gateway
 
 spring:
+  application:
+    name: hello-gateway
   cloud:
     gateway:
       routes:
-        - id: example_route
-          uri: https://httpbin.org/get
+        # 路由到httpbin.org的示例
+        - id: httpbin_route
+          uri: http://httpbin.org
           predicates:
-            - Path=/get
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
+        # 路由到本地测试控制器的示例
+        - id: test_route
+          uri: http://localhost:9080
+          predicates:
+            - Path=/test/**
+          filters:
+            - StripPrefix=1
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
 
 
 # logging
